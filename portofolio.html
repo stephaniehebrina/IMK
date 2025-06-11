@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portofolio - Rose & Thorn</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+      .cart-nav {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--burgundy);
+        font-size: 1.05em;
+        font-weight: 400;
+      }
+      .cart-nav .cart-icon {
+        font-size: 1.3em;
+      }
+      .cart-count {
+        position: absolute;
+        top: -8px;
+        right: -12px;
+        background-color: var(--accent-pink);
+        color: var(--white);
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        font-size: 0.75em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+      }
+
+      /* --- CSS UNTUK HERO SECTION (STATIC) --- */
+      .hero-slider {
+        position: relative;
+        height: 90vh;
+        overflow: hidden;
+      }
+      .slide {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+      }
+      .slide-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.6);
+        z-index: 1;
+      }
+      .slide-content {
+        position: relative;
+        text-align: center;
+        color: white;
+        max-width: 80%;
+        z-index: 2;
+      }
+      .slide-content h1 {
+        color: white;
+        font-size: 4rem;
+        margin-bottom: 10px;
+        font-family: "Playfair Display", serif;
+      }
+      .slide-content p {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        font-style: italic;
+        margin-bottom: 30px;
+      }
+
+      /* --- CSS BARU UNTUK GALERI FOTO --- */
+      .portfolio-gallery {
+        padding: 80px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .portfolio-gallery h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 3rem;
+        margin-bottom: 50px;
+      }
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+      }
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        cursor: pointer; /* Menambahkan cursor pointer agar terlihat bisa diklik */
+      }
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.4s ease;
+      }
+      .gallery-item:hover img {
+        transform: scale(1.05);
+      }
+      .gallery-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 2rem;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+      .gallery-item:hover .gallery-overlay {
+        opacity: 1;
+      }
+      .gallery-description {
+        font-family: "Open Sans", sans-serif;
+        font-size: 1.1rem;
+        color: #666;
+        max-width: 1000px;
+        margin: 0 auto 50px auto;
+        line-height: 1.7;
+      }
+
+      /* Untuk membuat beberapa item lebih besar */
+      @media (min-width: 768px) {
+        .gallery-grid {
+          grid-template-columns: repeat(4, 1fr);
+          grid-auto-rows: 250px;
+        }
+        .item-wide {
+          grid-column: span 2;
+        }
+        .item-tall {
+          grid-row: span 2;
+        }
+      }
+
+      /* --- CSS BARU UNTUK LIGHTBOX/MODAL --- */
+      .image-modal {
+        display: none; /* Awalnya disembunyikan */
+        position: fixed; /* Tetap di posisi yang sama saat di-scroll */
+        z-index: 1000; /* Tampil di atas semua elemen lain */
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.85); /* Latar belakang hitam transparan */
+        justify-content: center;
+        align-items: center;
+        animation: fadeIn 0.3s;
+      }
+
+      .modal-content {
+        max-width: 85%;
+        max-height: 85%;
+        animation: zoomIn 0.3s;
+      }
+
+      .close-button {
+        position: absolute;
+        top: 20px;
+        right: 35px;
+        color: #fff;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+        cursor: pointer;
+      }
+
+      .close-button:hover {
+        color: #bbb;
+      }
+
+      /* Animasi sederhana */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes zoomIn {
+        from {
+          transform: scale(0.8);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="logo">
+          <a href="index.html"><img src="images/logo.png" alt="Rose & Thorn Logo" /></a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="portofolio.html">Portofolio</a></li>
+          <li><a href="about-us.html">About Us</a></li>
+          <li>
+            <a href="cart.html" class="cart-nav" id="cart-nav">
+              <i class="fas fa-shopping-cart cart-icon"></i>
+              <span id="cart-text">Cart</span>
+              <span class="cart-count" id="cart-count">0</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero-slider" id="hero-slider">
+        <div class="slide active">
+          <img src="https://hannahbaskett.com/wp-content/uploads/2023/09/hannah-baskett-luxury-wedding-design-styling-hampshire-surrey-berkshire-cotswolds-gallery-34.jpg" alt="Buket Bunga Elegan" class="slide-image" />
+          <div class="slide-content">
+            <h1>Our Portofolio</h1>
+            <p>Showcasing Our Finest Floral Arrangements</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="portfolio-gallery">
+        <h2>Wedding</h2>
+        <p class="gallery-description">
+          Pernikahan Anda adalah cerminan dari kisah cinta Anda. Biarkan kami menjadi bagian dari perjalanan Anda dalam mewujudkan hari impian. Dari buket tangan yang menawan hingga dekorasi megah yang memukau, setiap detail kami rancang
+          secara personal untuk menyempurnakan hari istimewa Anda.
+        </p>
+        <div class="gallery-grid">
+          <div class="gallery-item item-tall">
+            <img src="https://hannahbaskett.com/wp-content/uploads/2025/02/image00011-1-scaled.jpeg" alt="Wedding Image 1" />
+            <div class="gallery-overlay">+</div>
+          </div>
+          <div class="gallery-item">
+            <img src="https://hannahbaskett.com/wp-content/uploads/2024/06/Somerley-House-Jamie-Edward-420-of-549-1-scaled.jpg" alt="Wedding Image 2" />
+            <div class="gallery-overlay">+</div>
+          </div>
+          <div class="gallery-item item-wide">
+            <img src="https://hannahbaskett.com/wp-content/uploads/2023/09/hannah-baskett-luxury-wedding-design-styling-hampshire-surrey-berkshire-cotswolds-gallery-38.jpg" alt="Wedding Image 3" />
+            <div class="gallery-overlay">+</div>
+          </div>
+          <div class="gallery-item">
+            <img src="https://hannahbaskett.com/wp-content/uploads/2024/08/jobradbury_2455-scaled.jpg" alt="Wedding Image 4" />
+            <div class="gallery-overlay">+</div>
+          </div>
+          <div class="gallery-item item-wide item-tall">
+            <img src="https://hannahbaskett.com/wp-content/uploads/2025/02/Bourne-522.jpg" alt="Wedding Image 5" />
+            <div class="gallery-overlay">+</div>
+          </div>
+          <div class="gallery-item">
+            <img src="https://hannahbaskett.com/wp-content/uploads/2024/08/jobradbury_1190-scaled.jpg" alt="Wedding Image 6" />
+            <div class="gallery-overlay">+</div>
+          </div>
+          <div class="gallery-item">
+            <img src="https://hannahbaskett.com/wp-content/uploads/2025/02/image00026-1-scaled.jpeg" alt="Wedding Image 7" />
+            <div class="gallery-overlay">+</div>
+          </div>
+          <div class="gallery-item item-wide">
+            <img src="https://hannahbaskett.com/wp-content/uploads/2023/09/hannah-baskett-luxury-wedding-design-styling-hampshire-surrey-berkshire-cotswolds-gallery-20.jpg" alt="Wedding Image 8" />
+            <div class="gallery-overlay">+</div>
+          </div>
+          <div class="gallery-item">
+            <img src="https://hannahbaskett.com/wp-content/uploads/2024/04/DSC_3363-2-scaled.jpg" alt="Wedding Image 9" />
+            <div class="gallery-overlay">+</div>
+          </div>
+          <div class="gallery-item">
+            <img src="https://hannahbaskett.com/wp-content/uploads/2024/08/jobradbury_2864_1-scaled.jpg" alt="Wedding Image 10" />
+            <div class="gallery-overlay">+</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="portfolio-gallery">
+        <h2>Bouquet Collection</h2>
+        <p class="gallery-description">
+          Lebih dari sekadar rangkaian bunga, sebuah buket adalah pesan yang personal. Dalam koleksi ini, kami menampilkan keragaman buket tangan yang dirangkai dengan teliti oleh para ahli kami. Baik untuk hadiah, perayaan, atau sekadar
+          mencerahkan hari, temukan buket yang sempurna untuk mewakili perasaan Anda.
+        </p>
+        <div class="gallery-grid">
+          <div class="gallery-item item-tall">
+            <img src="images/spring.jpg" alt="Bouquet Collection 1" />
+            <div class="gallery-overlay">+</div>
+          </div>
+          <div class="gallery-item item-wide">
+            <img src="images/wedding3.jpg" alt="Bouquet Collection 2" />
+            <div class="gallery-overlay">+</div>
+          </div>
+          <div class="gallery-item">
+            <img src="images/wedding4.jpg" alt="Bouquet Collection 3" />
+            <div class="gallery-overlay">+</div>
+          </div>
+          <div class="gallery-item">
+            <img src="images/tulip.png" alt="Bouquet Collection 4" />
+            <div class="gallery-overlay">+</div>
+          </div>
+          <div class="gallery-item item-wide item-tall">
+            <img src="images/product5.png" alt="Bouquet Collection 5" />
+            <div class="gallery-overlay">+</div>
+          </div>
+          <div class="gallery-item">
+            <img src="images/product1.jpeg" alt="Bouquet Collection 6" />
+            <div class="gallery-overlay">+</div>
+          </div>
+          <div class="gallery-item">
+            <img src="images/grad2.webp" alt="Bouquet Collection 7" />
+            <div class="gallery-overlay">+</div>
+          </div>
+          <div class="gallery-item">
+            <img src="images/grad5.webp" alt="Bouquet Collection 8" />
+            <div class="gallery-overlay">+</div>
+          </div>
+          <div class="gallery-item">
+            <img src="images/peony.jpg" alt="Bouquet Collection 9" />
+            <div class="gallery-overlay">+</div>
+          </div>
+          <div class="gallery-item">
+            <img src="images/wedding5.webp" alt="Bouquet Collection 10" />
+            <div class="gallery-overlay">+</div>
+          </div>
+          <div class="gallery-item">
+            <img src="images/wedding6.webp" alt="Bouquet Collection 11" />
+            <div class="gallery-overlay">+</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="imageModal" class="image-modal">
+      <span class="close-button">&times;</span>
+      <img class="modal-content" id="modalImage" />
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // --- LOGIKA KERANJANG (TIDAK BERUBAH) ---
+        const cartText = document.getElementById("cart-text");
+        const cartCount = document.getElementById("cart-count");
+        const cart = JSON.parse(localStorage.getItem("roseThornCart")) || [];
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        cartCount.textContent = totalItems;
+        if (totalItems > 0) {
+          cartCount.style.display = "flex";
+          cartText.textContent = "Cart";
+        } else {
+          cartCount.style.display = "none";
+          cartText.textContent = "Cart";
+        }
+
+        // ===== BAGIAN BARU 2: LOGIKA JAVASCRIPT UNTUK MODAL =====
+
+        // 1. Ambil elemen-elemen yang dibutuhkan
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+        const closeBtn = document.querySelector(".close-button");
+        const galleryItems = document.querySelectorAll(".gallery-item");
+
+        // 2. Tambahkan event listener untuk setiap item di galeri
+        galleryItems.forEach((item) => {
+          item.addEventListener("click", function () {
+            // Ambil URL gambar dari item yang diklik
+            const imgSrc = item.querySelector("img").src;
+
+            // Tampilkan modal dan atur gambarnya
+            modal.style.display = "flex";
+            modalImg.src = imgSrc;
+          });
+        });
+
+        // 3. Fungsi untuk menutup modal
+        function closeModal() {
+          modal.style.display = "none";
+        }
+
+        // 4. Tambahkan event listener untuk tombol close
+        closeBtn.addEventListener("click", closeModal);
+
+        // 5. Tambahkan event listener untuk menutup modal saat area gelap diklik
+        modal.addEventListener("click", function (event) {
+          // Cek apakah yang diklik adalah area latar belakang (bukan gambar)
+          if (event.target === modal) {
+            closeModal();
+          }
+        });
+
+        // (Opsional) Menutup modal dengan tombol Escape
+        document.addEventListener("keydown", function (event) {
+          if (event.key === "Escape") {
+            closeModal();
+          }
+        });
+      });
+    </script>
+
+    <footer>
+      <div class="footer-content">
+        <p>&copy; 2025 Rose & Thorn. All rights reserved.</p>
+        <p>Alamat: Jl. Bunga Indah No. 123, Surabaya, Indonesia</p>
+        <p>Telepon: +62 812-3456-7890 | Email: info@roseandthorn.com</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
