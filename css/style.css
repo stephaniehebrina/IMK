@@ -1,0 +1,471 @@
+/* Palet Warna */
+:root {
+    --burgundy: #51162c; /* Burgundy sebagai warna utama yang baru */
+    --white: #FFFFFF;
+    --light-pink: #f4b6c9; /* Pink Lembut */
+    --accent-pink: #cf8ea2; /* Pink yang sedikit lebih cerah untuk aksen */
+    --black: #000000;
+    --text-color: #4A4A4A; /* Warna teks umum, lebih lembut dari hitam murni */
+    --light-gray: #F8F8F8; /* Latar belakang untuk section tertentu */
+    --darker-burgundy: #3A0F1E; /* Sedikit lebih gelap dari burgundy untuk hover */
+}
+
+/* Reset dan General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif; /* Font sans-serif untuk teks tubuh */
+    line-height: 1.7;
+    color: var(--text-color);
+    background-color: var(--white);
+    overflow-x: hidden; /* Mencegah scroll horizontal */
+}
+
+a {
+    text-decoration: none;
+    color: var(--burgundy); /* Link biasa menggunakan burgundy */
+}
+
+a:hover {
+    color: var(--accent-pink); /* Menggunakan accent-pink untuk hover link navigasi/biasa */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Header */
+header {
+    background-color: var(--white);
+    padding: 4px 0; /* Padding lebih besar */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08); /* Shadow yang lebih lembut */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo img {
+    height: 70px; /* Ukuran logo sedikit lebih besar */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 40px; /* Jarak antar menu lebih lebar */
+}
+
+.nav-links a {
+    color: var(--burgundy); /* Link navigasi menggunakan burgundy */
+    font-weight: 400; /* Font weight lebih ringan */
+    font-size: 1.05em;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--accent-pink); /* Aksen pink saat hover navigasi */
+}
+
+/* Tombol Umum */
+.btn {
+    display: block; /* Mengubah dari inline-block menjadi block */
+    background-color: var(--accent-pink);
+    color: var(--white);
+    padding: 14px 0; /* Padding horizontal dihilangkan karena width 100% */
+    border-radius: 5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    width: calc(100% - 40px); /* Lebar 100% dari parent dikurangi padding item (25px kiri + 25px kanan = 50px, tapi sudah ada padding 25px pada product-item, jadi 40px lebih pas) */
+    margin-left: auto; /* Memastikan tombol di tengah */
+    margin-right: auto; /* Memastikan tombol di tengah */
+}
+
+.btn:hover {
+    background-color: var(--burgundy);
+    transform: translateY(-2px);
+}
+
+/* Konten Utama & Container */
+.container {
+    max-width: 1000px; /* Container lebih sempit untuk kesan minimalis */
+    margin: 60px auto; /* Margin atas/bawah lebih besar */
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif; /* Font serif untuk judul */
+    color: var(--burgundy); /* Judul menggunakan burgundy */
+    margin-bottom: 25px; /* Margin lebih besar */
+    text-align: center;
+}
+
+h1 {
+    font-size: 3.5em; /* Ukuran judul lebih besar */
+    line-height: 1.2;
+    margin-bottom: 15px;
+}
+
+h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+h3 {
+    font-size: 1.8em;
+}
+
+p {
+    margin-bottom: 15px;
+    font-size: 1.05em;
+}
+
+/* Hero Section Minimalis */
+.minimalist-hero {
+    position: relative;
+    width: 100%;
+    height: 96vh; /* Ketinggian hero */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.minimalist-hero .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Pastikan gambar mengisi seluruh area */
+    filter: brightness(0.7); /* Sedikit redupkan gambar untuk teks */
+}
+
+.hero-overlay-minimal {
+    position: absolute;
+    text-align: center;
+    color: var(--white);
+    max-width: 80%; /* Batasi lebar teks overlay */
+}
+
+.hero-overlay-minimal h1 {
+    color: var(--white); /* Judul putih di atas gambar */
+    font-size: 4.5em; /* Ukuran judul hero sangat besar */
+    letter-spacing: 2px;
+    margin-bottom: 0;
+}
+
+.hero-overlay-minimal .tagline {
+    font-family: 'Playfair Display', serif; /* Tagline pakai font judul */
+    font-size: 1.7em;
+    margin-bottom: 30px; /* Jarak ke tombol */
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Short Intro Section */
+.short-intro {
+    text-align: center;
+    padding: 60px 0; /* Padding vertikal lebih besar */
+    background-color: var(--light-gray); /* Latar belakang abu-abu muda */
+    margin: 80px auto; /* Margin lebih besar */
+    border-radius: 8px; /* Sudut sedikit melengkung */
+}
+
+.short-intro h2 {
+    margin-bottom: 25px;
+}
+
+.short-intro p {
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.8;
+    color: var(--text-color);
+}
+
+.product-grid.minimalist-grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    margin-top: 40px;
+}
+
+/* Product Grid Umum (untuk halaman products, 3 kolom) */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.product-grid .product-item {
+    background-color: var(--white);
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 25px; /* Padding di sekitar konten */
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-grid .product-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.product-grid .product-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.product-grid .product-item h3 {
+    font-size: 1.2em;
+    margin-bottom: 5px; /* Kurangi margin bawah judul */
+    color: var(--burgundy);
+    text-align: left;
+}
+
+/* Gaya untuk deskripsi produk singkat */
+.product-grid .product-item .product-desc {
+    font-size: 0.95em; /* Ukuran font lebih kecil */
+    color: var(--text-color);
+    margin-bottom: 15px; /* Jarak dari harga/tombol */
+    text-align: left; /* Rata kiri */
+    line-height: 1.5;
+    flex-grow: 1; /* Biarkan deskripsi mengambil ruang yang diperlukan */
+}
+
+/* Gaya untuk harga produk */
+.product-grid .product-item p:not(.product-desc) { /* Targetkan paragraf harga saja */
+    font-size: 1em;
+    color: var(--text-color);
+    margin-top: auto; /* Mendorong harga ke bawah (sebelum tombol) */
+    margin-bottom: 15px; /* Jarak dari tombol */
+    font-weight: 600;
+    text-align: right;
+    font-style: italic;
+    align-self: flex-end; /* Pastikan harga rata kanan dalam flex item */
+}
+
+/* Sesuaikan tombol agar ada di baris baru dan rata tengah */
+.product-grid .product-item .btn {
+    align-self: center; /* Tetap pusatkan tombol dalam flex container */
+    margin-top: 5px;
+    /* Tambahkan margin horizontal agar sejajar dengan gambar */
+    margin-left: 0; /* Override margin auto dari .btn jika perlu */
+    margin-right: 0; /* Override margin auto dari .btn jika perlu */
+    width: 100%; /* Pastikan tombol mengambil 100% lebar kontainer (padding sudah diatur di .product-item) */
+}
+
+/* CSS Khusus Halaman Flower Story */
+.flower-meaning-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.flower-item {
+    background-color: var(--white);
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+.flower-item img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%; /* Membuat gambar lingkaran */
+    margin-bottom: 20px;
+    border: 3px solid var(--light-pink); /* Border gambar menggunakan light-pink */
+}
+
+.flower-item h3 {
+    font-size: 1.6em;
+    color: var(--burgundy); /* Judul bunga menggunakan burgundy */
+    margin-bottom: 10px;
+}
+
+.flower-item p {
+    font-size: 1em;
+    line-height: 1.7;
+    text-align: justify;
+}
+
+/* CSS Khusus Halaman About Us */
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.about-text {
+    flex: 2;
+    min-width: 300px;
+}
+
+.about-image {
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+}
+
+.about-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.vision-mission, .values {
+    margin-top: 40px;
+}
+
+.vision-mission ul, .values ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.vision-mission li, .values li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 25px;
+}
+
+.vision-mission li::before, .values li::before {
+    content: "\f00c"; /* FontAwesome check icon */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: var(--accent-pink); /* Menggunakan accent-pink untuk ikon */
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* Footer */
+footer {
+    background-color: var(--burgundy); /* Background footer menggunakan burgundy */
+    color: var(--white);
+    padding: 50px 0; /* Padding footer lebih besar */
+    text-align: center;
+    margin-top: 80px; /* Jarak dari konten atas */
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-content p {
+    margin-bottom: 10px;
+    color: rgba(255, 255, 255, 0.9); /* Teks sedikit transparan */
+}
+
+.social-links a {
+    color: var(--white);
+    margin: 0 15px; /* Jarak antar ikon sosial lebih lebar */
+    font-size: 1.8em; /* Ukuran ikon lebih besar */
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--accent-pink); /* Aksen pink saat hover sosial media */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+    .nav-links {
+        margin-top: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .nav-links li {
+        margin: 10px 15px; /* Sesuaikan margin untuk mobile */
+    }
+    h1 {
+        font-size: 3em;
+    }
+    .hero-overlay-minimal h1 {
+        font-size: 3.2em;
+    }
+    .hero-overlay-minimal .tagline {
+        font-size: 1.3em;
+    }
+    h2 {
+        font-size: 2em;
+    }
+    h3 {
+        font-size: 1.5em;
+    }
+    .container {
+        margin: 40px auto;
+    }
+    .short-intro {
+        padding: 40px 0;
+        margin: 60px auto;
+    }
+    /* Produk di homepage menjadi 1 kolom di mobile */
+    .product-grid.minimalist-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    /* Produk di halaman products juga menjadi 1 kolom di mobile */
+    .product-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .flower-meaning-grid {
+        grid-template-columns: 1fr;
+    }
+    .about-content {
+        flex-direction: column;
+    }
+    .about-image {
+        order: -1; /* Gambar di atas teks di mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-overlay-minimal h1 {
+        font-size: 2.5em;
+    }
+    .hero-overlay-minimal .tagline {
+        font-size: 1.1em;
+    }
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+}
