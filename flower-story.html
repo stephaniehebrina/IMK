@@ -1,117 +1,175 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flower Story - Rose & Thorn</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Georgia&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* CSS Khusus Halaman Flower Story */
-        .flower-meaning-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 30px;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flower Story - Rose & Thorn</title>
 
-        .flower-item {
-            background-color: var(--white);
-            border: 1px solid #eee;
-            border-radius: 8px;
-            padding: 25px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-            text-align: center;
-        }
+  <!-- Link CSS utama -->
+  <link rel="stylesheet" href="css/style.css" />
 
-        .flower-item img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 50%; /* Membuat gambar lingkaran */
-            margin-bottom: 20px;
-            border: 3px solid var(--pink);
-        }
+  <!-- Font dan Icon -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
-        .flower-item h3 {
-            font-size: 1.6em;
-            color: var(--maroon);
-            margin-bottom: 10px;
-        }
+  <style>
+    /* CSS Khusus Flower Story */
+    .flower-meaning-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      margin-top: 30px;
+    }
 
-        .flower-item p {
-            font-size: 1em;
-            line-height: 1.7;
-            text-align: justify;
-        }
-    </style>
+    .flower-item {
+      background-color: var(--white);
+      border: 1px solid #eee;
+      border-radius: 8px;
+      padding: 25px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      text-align: center;
+    }
+
+    .flower-item img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      border: 3px solid var(--light-pink);
+    }
+
+    .flower-item h3 {
+      font-size: 1.6em;
+      color: var(--burgundy);
+      margin-bottom: 10px;
+    }
+
+    .flower-item p {
+      font-size: 1em;
+      line-height: 1.7;
+      text-align: justify;
+    }
+.cart-nav {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--burgundy);
+    font-size: 1.05em;
+    font-weight: 400;
+}
+
+.cart-nav .cart-icon {
+    font-size: 1.3em;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -12px;
+    background-color: var(--accent-pink);
+    color: var(--white);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 0.75em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+  </style>
 </head>
+
 <body>
     <header>
         <nav class="navbar">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="images/logo.png" alt="Rose & Thorn Logo">
-                </a>
-            </div>
+            <div class="logo"><a href="index.html"><img src="images/logo.png" alt="Rose & Thorn Logo"></a></div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="products.html">Products</a></li>
                 <li><a href="flower-story.html">Flower Story</a></li>
                 <li><a href="about-us.html">About Us</a></li>
+                <li>
+                    <a href="cart.html" class="cart-nav" id="cart-nav">
+                        <i class="fas fa-shopping-cart cart-icon"></i>
+                        <span id="cart-text">Cart</span>
+                        <span class="cart-count" id="cart-count">0</span>
+                    </a>
+                </li>
             </ul>
         </nav>
     </header>
 
-    <main class="container">
-        <h1>Cerita di Balik Setiap Kelopak</h1>
+  <main class="container">
+    <h1>Cerita di Balik Setiap Kelopak</h1>
 
-        <div class="flower-meaning-grid">
-            <div class="flower-item">
-                <img src="images/flower-rose-red.jpg" alt="Mawar Merah">
-                <h3>Mawar Merah</h3>
-                <p>Melambangkan cinta sejati, gairah, dan romansa yang mendalam. Pemberian mawar merah sering diartikan sebagai ungkapan perasaan yang kuat dan tak tergoyahkan. Ideal untuk menyatakan cinta atau anniversary.</p>
-            </div>
-            <div class="flower-item">
-                <img src="images/flower-lily.jpg" alt="Lily">
-                <h3>Lily</h3>
-                <p>Melambangkan kemurnian, keindahan, dan keagungan. Lily putih khususnya sering dikaitkan dengan kesucian. Bunga ini sering digunakan dalam acara pernikahan dan momen duka sebagai simbol kedamaian.</p>
-            </div>
-            <div class="flower-item">
-                <img src="images/flower-tulip.jpg" alt="Tulip">
-                <h3>Tulip</h3>
-                <p>Melambangkan cinta yang sempurna dan kebahagiaan. Setiap warna tulip memiliki makna tersendiri, seperti tulip merah untuk cinta sejati dan tulip kuning untuk keceriaan. Cocok untuk hadiah persahabatan atau penyemangat.</p>
-            </div>
-            <div class="flower-item">
-                <img src="images/flower-sunflower.jpg" alt="Bunga Matahari">
-                <h3>Bunga Matahari</h3>
-                <p>Melambangkan kesetiaan, pemujaan, dan kebahagiaan. Bunga matahari selalu menghadap matahari, melambangkan kesetiaan yang teguh. Sempurna untuk hadiah yang membawa energi positif dan semangat baru.</p>
-            </div>
-            <div class="flower-item">
-                <img src="images/flower-carnation.jpg" alt="Anyelir">
-                <h3>Anyelir (Carnation)</h3>
-                <p>Melambangkan cinta, daya tarik, dan kekaguman. Anyelir merah melambangkan cinta dan kasih sayang yang mendalam, sedangkan anyelir pink melambangkan cinta seorang ibu. Bunga yang sangat fleksibel untuk berbagai kesempatan.</p>
-            </div>
-            <div class="flower-item">
-                <img src="images/flower-orchid.jpg" alt="Anggrek">
-                <h3>Anggrek</h3>
-                <p>Melambangkan kemewahan, keindahan yang eksotis, dan kekuatan. Anggrek sering diberikan sebagai simbol kehormatan dan kekaguman. Pilihan tepat untuk hadiah yang berkelas dan berkesan.</p>
-            </div>
-            </div>
-    </main>
+    <div class="flower-meaning-grid">
+      <div class="flower-item">
+        <img src="images/flower-rose-red.jpg" alt="Mawar Merah" />
+        <h3>Mawar Merah</h3>
+        <p>Melambangkan cinta sejati, gairah, dan romansa yang mendalam. Pemberian mawar merah sering diartikan sebagai ungkapan perasaan yang kuat dan tak tergoyahkan. Ideal untuk menyatakan cinta atau anniversary.</p>
+      </div>
+      <div class="flower-item">
+        <img src="images/flower-lily.jpg" alt="Lily" />
+        <h3>Lily</h3>
+        <p>Melambangkan kemurnian, keindahan, dan keagungan. Lily putih khususnya sering dikaitkan dengan kesucian. Bunga ini sering digunakan dalam acara pernikahan dan momen duka sebagai simbol kedamaian.</p>
+      </div>
+      <div class="flower-item">
+        <img src="images/flower-tulip.jpg" alt="Tulip" />
+        <h3>Tulip</h3>
+        <p>Melambangkan cinta yang sempurna dan kebahagiaan. Setiap warna tulip memiliki makna tersendiri, seperti tulip merah untuk cinta sejati dan tulip kuning untuk keceriaan. Cocok untuk hadiah persahabatan atau penyemangat.</p>
+      </div>
+      <div class="flower-item">
+        <img src="images/flower-sunflower.jpg" alt="Bunga Matahari" />
+        <h3>Bunga Matahari</h3>
+        <p>Melambangkan kesetiaan, pemujaan, dan kebahagiaan. Bunga matahari selalu menghadap matahari, melambangkan kesetiaan yang teguh. Sempurna untuk hadiah yang membawa energi positif dan semangat baru.</p>
+      </div>
+      <div class="flower-item">
+        <img src="images/flower-carnation.jpg" alt="Anyelir" />
+        <h3>Anyelir (Carnation)</h3>
+        <p>Melambangkan cinta, daya tarik, dan kekaguman. Anyelir merah melambangkan cinta dan kasih sayang yang mendalam, sedangkan anyelir pink melambangkan cinta seorang ibu. Bunga yang sangat fleksibel untuk berbagai kesempatan.</p>
+      </div>
+      <div class="flower-item">
+        <img src="images/flower-orchid.jpg" alt="Anggrek" />
+        <h3>Anggrek</h3>
+        <p>Melambangkan kemewahan, keindahan yang eksotis, dan kekuatan. Anggrek sering diberikan sebagai simbol kehormatan dan kekaguman. Pilihan tepat untuk hadiah yang berkelas dan berkesan.</p>
+      </div>
+    </div>
+  </main>
 
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2025 Rose & Thorn. All rights reserved.</p>
-            <p>Alamat: Jl. Bunga Indah No. 123, Surabaya, Indonesia</p>
-            <p>Telepon: +62 812-3456-7890 | Email: info@roseandthorn.com</p>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-whatsapp"></i></a>
-            </div>
-        </div>
-    </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const cartText = document.getElementById('cart-text');
+        const cartCount = document.getElementById('cart-count');
+        const cart = JSON.parse(localStorage.getItem('roseThornCart')) || [];
+    
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        cartCount.textContent = totalItems;
+    
+        if (totalItems > 0) {
+            cartCount.style.display = 'flex';
+            cartText.textContent = 'Cart';
+        } else {
+            cartCount.style.display = 'none';
+            cartText.textContent = 'Cart';
+        }
+    });
+    </script>
+      
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 Rose & Thorn. All rights reserved.</p>
+      <p>Alamat: Jl. Bunga Indah No. 123, Surabaya, Indonesia</p>
+      <p>Telepon: +62 812-3456-7890 | Email: info@roseandthorn.com</p>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
